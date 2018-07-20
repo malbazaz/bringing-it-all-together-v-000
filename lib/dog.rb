@@ -48,7 +48,7 @@ attr_accessor :name, :breed, :id
   end
 
   def self.create(attributes)
-    binding.pry
+    #binding.pry
     new_dog = Dog.new(attributes[:name], attributes[:breed])
     new_dog.save
     new_dog
