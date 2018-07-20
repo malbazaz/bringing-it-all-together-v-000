@@ -68,9 +68,9 @@ attr_accessor :name, :breed, :id
   def self.new_from_db(row)
     sql = <<-SQL
       INSERT INTO dogs(name, breed) VALUES (?,?)
-      SQL 
+      SQL
       DB[:conn].execute(sql, row[1], row[2])
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
-  end 
+  end
 
 end
