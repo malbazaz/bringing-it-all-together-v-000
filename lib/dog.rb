@@ -65,10 +65,19 @@ attr_accessor :name, :breed, :id
     #Dog.new(found_dog[1], found_dog[2], found_dog[0])
   end
 
+  def self.find_by_name(name)
+    sql = <<- SQL
+    SELECT * FROM dogs
+    WHERE name = ?
+    SQL
+    DB[:conn].execute(sql, name)
+  end
+
   def self.new_from_db(row)
     new_dog = self.new(name:row[1], breed:row[2], id:row[0])
     new_dog
   end
+
 
 
 end
