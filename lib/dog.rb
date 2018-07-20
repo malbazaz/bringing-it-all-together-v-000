@@ -70,7 +70,8 @@ attr_accessor :name, :breed, :id
     SELECT * FROM dogs
     WHERE name = ?
     SQL
-    DB[:conn].execute(sql, name)
+    found_dog = DB[:conn].execute(sql, name)[0]
+    self.new_from_db(found_dog)
   end
 
   def self.new_from_db(row)
