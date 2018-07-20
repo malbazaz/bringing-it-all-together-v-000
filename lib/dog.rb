@@ -59,7 +59,10 @@ attr_accessor :name, :breed, :id
       SELECT * FROM dogs
       WHERE id = ?;
     SQL
-    found_dog = DB[:conn].execute(sql, id)
-    Dog.new(found_dog[1], found_dog[2], found_dog[0])
+    found_dog = DB[:conn].execute(sql, id).map do |row|
+      self.new_from_db(row)
+    end 
+    #Dog.new(found_dog[1], found_dog[2], found_dog[0])
   end
+  
 end
