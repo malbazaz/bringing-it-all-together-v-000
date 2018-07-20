@@ -47,8 +47,9 @@ attr_accessor :name, :breed, :id
     DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
 
-  def self.create(name:, breed:)
-    new_dog = Dog.new(name, breed)
+  def self.create(attributes)
+    binding.pry
+    new_dog = Dog.new(dog, breed)
     new_dog.save
     new_dog
   end
